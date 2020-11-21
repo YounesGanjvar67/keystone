@@ -1,0 +1,27 @@
+OS_USERNAME=admin
+OS_PASSWORD=admin
+OS_PROJECT_NAME=admin
+
+OS_PROJECT_DOMAIN_NAME=Default
+OS_AUTH_URL=http://127.0.0.1:5000/v3
+OS_IDENTITY_API_VERSION=3
+
+
+curl -i \
+  -H "Content-Type: application/json" \
+  -d '
+{ "auth": {
+    "identity": {
+      "methods": ["password"],
+      "password": {
+        "user": {
+          "name": "admin",
+          "domain": { "id": "default" },
+          "password": "admin"
+        }
+      }
+    }
+  }
+}' \
+  "http://localhost:5000/v3/auth/tokens" ; echo
+
